@@ -281,7 +281,7 @@ var/to_chat_filename
 var/to_chat_line
 var/to_chat_src
 
-/proc/to_chat(target, message, flag)
+/proc/to_chat(target, message)
 	if(!is_valid_tochat_message(message) || !is_valid_tochat_target(target))
 		target << message
 
@@ -332,8 +332,6 @@ var/to_chat_src
 
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the javascript.
 		var/output_message = "[url_encode(url_encode(message))]"
-		if(flag)
-			output_message += "&[url_encode(flag)]"
 
 		target << output(output_message, "browseroutput:output")
 
