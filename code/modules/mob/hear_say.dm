@@ -114,7 +114,7 @@
 			playsound_local(source, speech_sound, sound_vol, 1, sound_frequency)
 
 
-/mob/proc/hear_radio(list/message_pieces, verb = "says", part_a, part_b, mob/speaker = null, hard_to_hear = 0, vname = "", atom/follow_target, radio_freq)
+/mob/proc/hear_radio(list/message_pieces, verb = "says", part_a, part_b, mob/speaker = null, hard_to_hear = 0, vname = "", atom/follow_target)
 	if(!client)
 		return
 
