@@ -4,6 +4,7 @@ var/list/chatResources = list(
 	"goon/browserassets/js/json2.min.js",
 	"goon/browserassets/js/twemoji.min.js",
 	"goon/browserassets/js/browserOutput.js",
+	"goon/browserassets/js/channelOutput.js",
 	"goon/browserassets/js/unicode_9_annotations.js",
 	"goon/browserassets/css/fonts/fontawesome-webfont.eot",
 	"goon/browserassets/css/fonts/fontawesome-webfont.svg",
@@ -43,7 +44,7 @@ var/list/chatResources = list(
 	if(!owner)
 		return 0
 
-	if(!winexists(owner, "browseroutput"))
+	if(!winexists(owner, "browseroutput") || !winexists(owner, "common-comms")|| !winexists(owner, "priority-comms")|| !winexists(owner, "department-comms") )
 		spawn()
 			alert(owner.mob, "Updated chat window does not exist. If you are using a custom skin file please allow the game to update.")
 		broken = TRUE
@@ -71,6 +72,9 @@ var/list/chatResources = list(
 
 		for(var/subattempts in 1 to 3)
 			owner << browse(file2text("goon/browserassets/html/browserOutput.html"), "window=browseroutput")
+			owner << browse(file2text("goon/browserassets/html/channelOutput.html"), "window=priority-comms")
+			owner << browse(file2text("goon/browserassets/html/channelOutput.html"), "window=department-comms")
+			owner << browse(file2text("goon/browserassets/html/channelOutput.html"), "window=common-comms")
 			sleep(10 SECONDS)
 			if(!owner || loaded)
 				return

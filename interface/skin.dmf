@@ -220,7 +220,120 @@ window "outputwindow"
 		anchor2 = 100,100
 		background-color = #ffffff
 		is-disabled = true
-
+window "pane-common-comms"
+	elem "pane-common-comms"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Common"
+		is-pane = true
+		outer-size = 658x549
+		inner-size = 640x502
+	elem "common-comms"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+window "pane-department-comms"
+	elem "pane-department-comms"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		is-disabled = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Department Comms"
+		is-pane = true
+	elem "department-comms"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+window "pane-priority-comms"
+	elem "pane-priority-comms"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Priority Comms"
+		is-pane = true
+	elem "priority-comms"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+window "pane-split"
+	elem "pane-split"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 658x549
+		inner-size = 640x502
+	elem "pane-split-child"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "pane-split-top"
+		right = "pane-split-bot"
+		is-vert = false
+window "pane-split-bot"
+	elem "pane-split-bot"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 658x549
+		inner-size = 640x502
+	elem "pane-split-bot-child"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "pane-common-comms"
+		right = "outputwindow"
+		is-vert = false
+window "pane-split-top"
+	elem "pane-split-top"
+		type = MAIN
+		pos = 372,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 658x549
+		inner-size = 640x502
+	elem "pane-split-top-child"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "pane-priority-comms"
+		right = "pane-department-comms"
+		is-vert = false
 window "rpane"
 	elem "rpane"
 		type = MAIN
@@ -236,7 +349,7 @@ window "rpane"
 		anchor2 = 100,100
 		saved-params = "splitter"
 		left = "infowindow"
-		right = "outputwindow"
+		right = "pane-split"
 		is-vert = false
 	elem "textb"
 		type = BUTTON

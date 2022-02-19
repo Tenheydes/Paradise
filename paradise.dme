@@ -2573,6 +2573,7 @@
 #include "code\modules\world_topic\queue_status.dm"
 #include "code\modules\world_topic\status.dm"
 #include "goon\code\datums\browserOutput.dm"
+#include "interface\chatPanes.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 // END_INCLUDE
