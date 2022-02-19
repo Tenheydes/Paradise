@@ -31,7 +31,7 @@
 /obj/item/radio/intercom/command
 	name = "station intercom (Command)"
 	custom_name = TRUE
-	frequency = COMM_FREQ
+	frequency = CMD_FREQ
 
 /obj/item/radio/intercom/specops
 	name = "\improper Special Operations intercom"
@@ -102,7 +102,7 @@
 	internal_channels = list(
 		num2text(PUB_FREQ) = list(),
 		num2text(AI_FREQ)  = list(),
-		num2text(COMM_FREQ)= list(),
+		num2text(CMD_FREQ) = list(),
 		num2text(ENG_FREQ) = list(),
 		num2text(MED_FREQ) = list(),
 		num2text(MED_I_FREQ)=list(),

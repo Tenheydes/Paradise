@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(ACCESS_CAPTAIN),
 	num2text(ERT_FREQ) = list(ACCESS_CENT_SPECOPS),
-	num2text(COMM_FREQ)= list(ACCESS_HEADS),
+	num2text(CMD_FREQ) = list(ACCESS_HEADS),
 	num2text(ENG_FREQ) = list(ACCESS_ENGINE, ACCESS_ATMOSPHERICS),
 	num2text(MED_FREQ) = list(ACCESS_MEDICAL),
 	num2text(MED_I_FREQ)=list(ACCESS_MEDICAL),

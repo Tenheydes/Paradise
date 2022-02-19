@@ -26,10 +26,10 @@
 		// Assistant
 		"Assistant" = "radio",
 		// Command (Solo command, not department heads)
-		"Blueshield" = "comradio",
-		"Captain" = "comradio",
-		"Head of Personnel" = "comradio",
-		"Nanotrasen Representative" = "comradio",
+		"Blueshield" = "cmdradio",
+		"Captain" = "cmdradio",
+		"Head of Personnel" = "cmdradio",
+		"Nanotrasen Representative" = "cmdradio",
 		// Engineeering
 		"Atmospheric Technician" = "engradio",
 		"Chief Engineer" = "engradio",
