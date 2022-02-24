@@ -373,29 +373,52 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
 
 		SSblackbox.LogBroadcast(display_freq)
 
-	 /* ###### Send the message ###### */
+		// --- Determine which chat window the radio goes to ---
 
+		var/output_window = BROWSER_ROUTING_UNSORTED
+
+		switch(display_freq)
+			if(CMD_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_CMD
+			if(SEC_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_SEC
+			if(ENG_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_ENG
+			if(SCI_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_SCI
+			if(MED_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_MED
+			if(SUP_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_SUP
+			if(SRV_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_SRV
+			if(PROC_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_PRC
+			if(PUB_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_PUB
+			if(ERT_FREQ, DTH_FREQ, SYND_FREQ, SYNDTEAM_FREQ)
+				output_window = BROWSER_ROUTING_TCOM_EVT
 
 	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
 
 		if(length(heard_masked))
 			for(var/M in heard_masked)
 				var/mob/R = M
-				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 0, tcm.sender_name, tcm.follow_target)
+				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 0, tcm.sender_name, tcm.follow_target, output_window)
 
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 
 		if(length(heard_normal))
 			for(var/M in heard_normal)
 				var/mob/R = M
-				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 0, tcm.sender_name, tcm.follow_target)
+				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 0, tcm.sender_name, tcm.follow_target, output_window)
 
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 
 		if(length(heard_voice))
 			for(var/M in heard_voice)
 				var/mob/R = M
-				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender,0, tcm.vname, tcm.follow_target)
+				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender,0, tcm.vname, tcm.follow_target, output_window)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")
@@ -403,7 +426,7 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
 		if(length(heard_garbled))
 			for(var/M in heard_garbled)
 				var/mob/R = M
-				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 1, tcm.vname, tcm.follow_target)
+				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 1, tcm.vname, tcm.follow_target, output_window)
 
 
 		/* --- Complete gibberish. Usually happens when there's a compressed message --- */
@@ -411,7 +434,7 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
 		if(length(heard_gibberish))
 			for(var/M in heard_gibberish)
 				var/mob/R = M
-				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 1, "", tcm.follow_target)
+				R.hear_radio(tcm.message_pieces, tcm.verbage, part_a, part_b, tcm.sender, 1, "", tcm.follow_target, output_window)
 
 	return TRUE
 

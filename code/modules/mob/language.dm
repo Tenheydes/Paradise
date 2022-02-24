@@ -117,7 +117,10 @@
 			continue
 
 		else if(istype(player,/mob/dead) || ((src in player.languages) && check_special_condition(player, speaker)))
-			to_chat(player, msg)
+			if(src.flags & HIVEMIND)
+				to_chat(player, msg, BROWSER_ROUTING_TELEPATHY)
+			else
+				to_chat(player, msg)
 
 /datum/language/proc/check_special_condition(mob/other, mob/living/speaker)
 	return TRUE

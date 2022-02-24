@@ -22,6 +22,6 @@
 	// Send to online admins
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
-			to_chat(C, "<span class='admin_channel'>GSAY: [usr.ckey]@[GLOB.configuration.system.instance_id]: [msg]</span>")
+			to_chat(C, "<span class='admin_channel'>GSAY: [usr.ckey]@[GLOB.configuration.system.instance_id]: [msg]</span>", BROWSER_ROUTING_ADMIN) // Is this the right routing?
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "gsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
