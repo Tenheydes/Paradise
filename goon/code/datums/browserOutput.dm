@@ -285,7 +285,7 @@ var/to_chat_filename
 var/to_chat_line
 var/to_chat_src
 
-/proc/to_chat(target, message)
+/proc/to_chat(target, message, routing=BROWSER_ROUTING_UNSORTED)
 	if(!is_valid_tochat_message(message) || !is_valid_tochat_target(target))
 		target << message
 
@@ -337,6 +337,36 @@ var/to_chat_src
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the javascript.
 		var/output_message = "[url_encode(url_encode(message))]"
 
-		target << output(output_message, "browseroutput:output")
+		if(islist(target))
+			for(var/mob/m in target)
+				route_chat_message(m.client, output_message, routing)
+			return
+
+		if(ismob(target))
+			if(target:client)
+				route_chat_message(target:client, output_message, routing)
+			else
+				target << output(output_message, "browserOutput:output")
+			return
+
+		if(isclient(target))
+			route_chat_message(target, output_message, routing)
+			return
+
+		target << output(output_message, "browserOutput:output")
+
+
+proc/route_chat_message(client/c, msg, route)
+	var/chat_target = c.prefs.routing[route];
+	var/chat_window_name = "browserOutput:output"
+	switch(chat_target)
+		if(PANE_A)
+			chat_window_name = "priority-comms:output"
+		if(PANE_B)
+			chat_window_name = "department-comms:output"
+		if(PANE_C)
+			chat_window_name = "common-comms:output"
+
+	c << output(msg, chat_window_name)
 
 #undef MAX_COOKIE_LENGTH
