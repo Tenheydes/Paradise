@@ -9,9 +9,9 @@
 #define BROWSER_ROUTING_TCOM_SRV "Service"	// Service
 #define BROWSER_ROUTING_TCOM_PRC "Procedure"	// Procedure
 #define BROWSER_ROUTING_TCOM_PUB "Public"	// Public
-#define BROWSER_ROUTING_TCOM_EVT "Event - ERT/Syndicate" // Event: Syndicate, Syndteam, Deathsquad, Ert
 
 #define BROWSER_ROUTING_TELEPATHY "Hivemind / Binary"
+#define BROWSER_ROUTING_TCOM_EVT "Event - ERT/Syndicate" // Event: Syndicate, Syndteam, Deathsquad, Ert
 
 #define BROWSER_ROUTING_SERVER   "Server"
 #define BROWSER_ROUTING_ADMIN    "Admin Chat"

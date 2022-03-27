@@ -364,9 +364,3 @@
 	prefs.save_preferences(src)
 	to_chat(usr, "You will [(prefs.toggles2 & PREFTOGGLE_2_SEE_ITEM_OUTLINES) ? "now" : "no longer"] see item outlines on hover.")
 
-/client/verb/route_chat(channel as text|anything in prefs.routing, target as num)
-	set name = "Route Chat Channel"
-	set category = "Preferences"
-	set desc = "Change where a channel goes. Set the target from 0..3 where 0 is default."
-	prefs.routing[channel] = target
-
