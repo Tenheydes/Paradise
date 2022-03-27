@@ -339,34 +339,48 @@ var/to_chat_src
 
 		if(islist(target))
 			for(var/mob/m in target)
-				route_chat_message(m.client, output_message, routing)
+				route_chat_message(m, output_message, routing)
 			return
 
 		if(ismob(target))
-			if(target:client)
-				route_chat_message(target:client, output_message, routing)
-			else
-				target << output(output_message, "browserOutput:output")
+			route_chat_message(target, output_message, routing)
 			return
 
 		if(isclient(target))
-			route_chat_message(target, output_message, routing)
+			route_chat_message(target:mob, output_message, routing)
 			return
 
 		target << output(output_message, "browserOutput:output")
 
 
-proc/route_chat_message(client/c, msg, route)
-	var/chat_target = c.prefs.routing[route];
-	var/chat_window_name = "browserOutput:output"
-	switch(chat_target)
-		if(PANE_A)
-			chat_window_name = "priority-comms:output"
-		if(PANE_B)
-			chat_window_name = "department-comms:output"
-		if(PANE_C)
-			chat_window_name = "common-comms:output"
+proc/route_chat_message(mob/target, msg, route)
+	// If a mob with no client (poly wanna cracker?), just send directly.
+	if(!target.client)
+		target << output(msg, "browserOutput:output")
+		return
 
-	c << output(msg, chat_window_name)
+	// Check if the recipient... has ears... with headsets.
+	// If that headset's primary chanel matches, then we're receving
+	// department comms.
+	var/mob/living/carbon/human/h = target
+	var/obj/item/radio/headset/hs_l = h?.l_ear
+	var/obj/item/radio/headset/hs_r = h?.r_ear
+	if(hs_l?.channels[1] == route && route != BROWSER_ROUTING_TCOM_CMD)
+		route = BROWSER_ROUTING_TCOM_DPT
+	if(hs_r?.channels[1] == route && route != BROWSER_ROUTING_TCOM_CMD)
+		route = BROWSER_ROUTING_TCOM_DPT
+
+	// Figure out where the user has configured this comm to go
+	var/chat_target = target.client.prefs.routing[route];
+
+	// And look up the name of the correct GUI element to send to.
+	var/chat_window_name
+	switch(chat_target)
+		if(PANE_A)	chat_window_name = "priority-comms:output"
+		if(PANE_B)	chat_window_name = "department-comms:output"
+		if(PANE_C)	chat_window_name = "common-comms:output"
+		else		chat_window_name = "browserOutput:output"
+
+	target << output(msg, chat_window_name)
 
 #undef MAX_COOKIE_LENGTH
