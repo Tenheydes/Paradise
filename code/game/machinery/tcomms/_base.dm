@@ -399,6 +399,9 @@ GLOBAL_LIST_EMPTY(tcomms_machines)
 			if(ERT_FREQ, DTH_FREQ, SYND_FREQ, SYNDTEAM_FREQ)
 				output_window = BROWSER_ROUTING_TCOM_EVT
 
+			// BROWSER_ROUTING_TCOM_DPT is *not* handled here becuase it varies per recipient.
+			// Identification of dpartment comms is done in route_chat_message().
+
 	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
 
 		if(length(heard_masked))

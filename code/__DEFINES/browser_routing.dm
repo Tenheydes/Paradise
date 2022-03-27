@@ -1,24 +1,25 @@
-#define BROWSER_ROUTING_UNSORTED "Unsorted"
+#define BROWSER_ROUTING_TCOM_DPT 	"Department"
+#define BROWSER_ROUTING_TCOM_CMD 	"Command"
+#define BROWSER_ROUTING_TCOM_SEC 	"Security"
+#define BROWSER_ROUTING_TCOM_ENG 	"Engineering"
+#define BROWSER_ROUTING_TCOM_SCI 	"Science"
+#define BROWSER_ROUTING_TCOM_MED 	"Medical"
+#define BROWSER_ROUTING_TCOM_SUP 	"Supply"
+#define BROWSER_ROUTING_TCOM_SRV	"Service"
+#define BROWSER_ROUTING_TCOM_PRC 	"Procedure"
+#define BROWSER_ROUTING_TCOM_PUB 	"Public"
 
-#define BROWSER_ROUTING_TCOM_CMD "Command"	// Command
-#define BROWSER_ROUTING_TCOM_SEC "Security"	// Security (And Sec Internal Frequency)
-#define BROWSER_ROUTING_TCOM_ENG "Engineering"	// Engineering
-#define BROWSER_ROUTING_TCOM_SCI "Science"	// Science
-#define BROWSER_ROUTING_TCOM_MED "Medical"	// Medical (And Med Internal Frequency)
-#define BROWSER_ROUTING_TCOM_SUP "Supply"	// Supply (aka cargo)
-#define BROWSER_ROUTING_TCOM_SRV "Service"	// Service
-#define BROWSER_ROUTING_TCOM_PRC "Procedure"	// Procedure
-#define BROWSER_ROUTING_TCOM_PUB "Public"	// Public
+#define BROWSER_ROUTING_TELEPATHY	"Hivemind / Binary"
+#define BROWSER_ROUTING_TCOM_EVT	"Event - ERT/Syndicate" // Event: Syndicate, Syndteam, Deathsquad, Ert
 
-#define BROWSER_ROUTING_TELEPATHY "Hivemind / Binary"
-#define BROWSER_ROUTING_TCOM_EVT "Event - ERT/Syndicate" // Event: Syndicate, Syndteam, Deathsquad, Ert
+#define BROWSER_ROUTING_SERVER   	"Server"
+#define BROWSER_ROUTING_ADMIN    	"Admin Chat"
+#define BROWSER_ROUTING_MENTOR   	"Mentor Chat"
+#define BROWSER_ROUTING_ATTACK   	"Attack Logs"
+#define BROWSER_ROUTING_AHELP    	"Admin help"
+#define BROWSER_ROUTING_MHELP    	"Mentor help"
 
-#define BROWSER_ROUTING_SERVER   "Server"
-#define BROWSER_ROUTING_ADMIN    "Admin Chat"
-#define BROWSER_ROUTING_MENTOR   "Mentor Chat"
-#define BROWSER_ROUTING_ATTACK   "Attack Logs"
-#define BROWSER_ROUTING_AHELP    "Admin help"
-#define BROWSER_ROUTING_MHELP    "Mentor help"
+#define BROWSER_ROUTING_UNSORTED 	"Unsorted"
 
 #define PANE_O 0
 #define PANE_C 1
